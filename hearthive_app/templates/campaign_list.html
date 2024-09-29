@@ -1,0 +1,36 @@
+{% extends 'base_fundraiser.html' %}
+
+{% block content %}
+<div class="container">
+  <h2 class="my-4">Your Campaigns</h2>
+  
+  <div class="row">
+    {% for campaign in campaigns %}
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="{{ campaign.image.url }}" class="card-img-top" alt="{{ campaign.title }}">
+          <div class="card-body">
+            <h5 class="card-title">{{ campaign.title }}</h5>
+            <p class="card-text">Status: {{ campaign.status }}</p>
+            <a href="{% url 'campaign_detail' campaign.id %}" class="btn btn-primary">View Details</a>
+          </div>
+        </div>
+      </div>
+    {% empty %}
+      <div class="col-12">
+        <p>No campaigns yet.</p>
+        <a href="{% url 'create_campaign' %}" class="btn btn-primary">Create Campaign</a>
+      </div>
+    {% endfor %}
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-md-4 mx-auto">
+      <a href="{% url 'create_campaign' %}" class="btn btn-success">Create New Campaign</a>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+
+

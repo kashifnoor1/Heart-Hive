@@ -1,0 +1,126 @@
+{% extends 'base_donor.html' %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row">
+        <!-- Campaign Details Card -->
+        <div class="row justify-content-center">
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+            <div class="card">
+                <!-- Campaign Image -->
+                <img src="{{ campaign.image.url }}" class="card-img-top" alt="{{ campaign.title }}">
+
+                <div class="card-body">
+                    <!-- Campaign Title -->
+                    <h2 class="card-title">{{ campaign.title }}</h2>
+                    
+                    <!-- Campaign Information -->
+                    <p class="card-text"><strong>Category:</strong> {{ campaign.category_id }}</p>
+                    <p class="card-text"><strong>Target Amount:</strong> {{ campaign.target_amount }}</p>
+                    <p class="card-text"><strong>Total Donations:</strong> {{ total_donations }}</p>
+                    <p class="card-text"><strong>Status:</strong> {{ campaign.status }}</p>
+                    
+ 
+
+                    <!-- Delete Button (only visible to the owner) -->
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- Donation History Section -->
+    <div class="row mt-5">
+        <div class="row justify-content-center">
+        <div class="col-md-8 mx-auto">
+            <h3>Donation History</h3>
+            <ul class="list-group">
+                {% for donation in donations %}
+                    <li class="list-group-item">
+                        <strong>Donor:</strong> {{ donation.donor.username }} <br>
+                        <strong>Amount:</strong> {{ donation.amount }} <br>
+                        <strong>Date:</strong> {{ donation.date }}
+                    </li>
+                {% empty %}
+                    <li class="list-group-item">No donations made yet.</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+</div>
+<div class="row mt-5">
+    <div class="row justify-content-center">
+    <div class="col-md-4 mx-auto">
+{% if user == campaign.fundraiser %}
+<a href="{% url 'delete_campaign' campaign.id %}" class="btn btn-danger mt-3" onclick="return confirm('Are you sure you want to delete this campaign?');">Delete Campaign</a>
+{% endif %}
+    </div>
+</div>
+</div>
+
+{% endblock %}
+
+
+
+
+
+
+
+{% comment %} {% extends 'base_donor.html' %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row">
+        <!-- Campaign Details Card -->
+        <div class="row justify-content-center">
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+            <div class="card">
+                <!-- Campaign Image -->
+                <img src="{{ campaign.image.url }}" class="card-img-top" alt="{{ campaign.title }}">
+
+                <div class="card-body">
+                    <!-- Campaign Title -->
+                    <h2 class="card-title">{{ campaign.title }}</h2>
+                    
+                    <!-- Campaign Information -->
+                    <p class="card-text"><strong>Category:</strong> {{ campaign.category_id }}</p>
+                    <p class="card-text"><strong>Target Amount:</strong> {{ campaign.target_amount }}</p>
+                    <p class="card-text"><strong>Total Donations:</strong> {{ total_donations }}</p>
+                    <p class="card-text"><strong>Status:</strong> {{ campaign.status }}</p>
+                    
+                    <!-- Optional: Add any buttons or actions here -->
+                    <a href="{% url 'donate_to_campaign' campaign.id %}" class="btn btn-success mt-3">Donate Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- Donation History Section -->
+    <div class="row mt-5">
+        <div class="row justify-content-center">
+        <div class="col-md-8 mx-auto">
+            <h3>Donation History</h3>
+            <ul class="list-group">
+                {% for donation in donations %}
+                    <li class="list-group-item">
+                        <strong>Donor:</strong> {{ donation.donor.username }} <br>
+                        <strong>Amount:</strong> {{ donation.amount }} <br>
+                        <strong>Date:</strong> {{ donation.date }}
+                    </li>
+                {% empty %}
+                    <li class="list-group-item">No donations made yet.</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %} {% endcomment %}
+
+
+
+
+

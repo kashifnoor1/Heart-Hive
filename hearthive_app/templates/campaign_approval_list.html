@@ -1,0 +1,15 @@
+{% extends 'base_admin.html' %}
+{% block content %}
+  <h2>Pending Campaigns for Approval</h2>
+  <ul>
+    {% for campaign in pending_campaigns %}
+      <li>
+        {{ campaign.title }} - {{ campaign.status }} 
+        <a href="{% url 'admin_campaign_approve' campaign.pk %}">Approve</a>
+      </li>
+    {% empty %}
+      <li>No campaigns pending approval.</li>
+    {% endfor %}
+  </ul>
+{% endblock %}
+

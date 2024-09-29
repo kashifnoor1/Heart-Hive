@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}About Us{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="card shadow-lg p-4 mb-5 bg-white rounded">
+        <h2 class="text-center text-primary mb-4">About HeartHive</h2>
+        <p class="text-justify">HeartHive is a crowdfunding platform dedicated to helping individuals and organizations raise funds for their charitable causes. We believe that every little bit helps, and together we can make a difference.</p>
+
+        <h3 class="mt-4">Our Mission</h3>
+        <p class="text-justify">Our mission is to connect fundraisers with donors who share a passion for making a positive impact in their communities. We strive to provide a seamless and transparent experience for both donors and fundraisers.</p>
+
+        <h3 class="mt-4">What We Offer</h3>
+        <ul class="list-group list-group-flush mb-4">
+            <li class="list-group-item"><strong>Easy Campaign Setup:</strong> Fundraisers can create campaigns in just a few minutes.</li>
+            <li class="list-group-item"><strong>Secure Donations:</strong> Our platform ensures that all transactions are safe and secure.</li>
+            <li class="list-group-item"><strong>Real-Time Tracking:</strong> Fundraisers can track their donations in real-time and keep their supporters updated.</li>
+            <li class="list-group-item"><strong>Community Engagement:</strong> We encourage communication between fundraisers and their supporters through updates and thank-you messages.</li>
+        </ul>
+
+        <h3 class="mt-4">Join Us</h3>
+        <p class="text-justify">If you are a donor looking to support a cause or a fundraiser wanting to make a difference, join HeartHive today and help us create a better world, one campaign at a time!</p>
+
+        <div class="text-center mt-4">
+            <a href="{% url 'donor_register' %}" class="btn btn-primary btn-lg">Join HeartHive</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

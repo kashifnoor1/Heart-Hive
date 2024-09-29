@@ -1,0 +1,35 @@
+{% extends 'base_admin.html' %}
+
+{% block content %}
+<div class="container">
+    <h1>Campaign Approval History</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Campaign</th>
+                <th>Action</th>
+                <th>Admin</th>
+                <th>Timestamp</th>
+                <th> Target Amount </th>
+                <th> Amount </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for record in approval_history %}
+                <tr>
+                    <td>{{ record.campaign.title }}</td>
+                    <td>{{ record.action }}</td>
+                    <td>{{ record.admin.username }}</td>
+                    <td>{{ record.timestamp }}</td>
+                    <td>{{ record.campaign.target_amount }}</td>
+                    <td>{{ record.campaign.total_donations }}</td> 
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="4">No approval history available.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'base_admin.html' %}
+
+{% block content %}
+<div class="container text-center">
+    <h1>Admin Dashboard</h1>
+    <p>Welcome to the Admin Portal, {{ user.username }}.</p>
+    <br><br><br><br>
+    <h2>Pending Campaigns</h2>
+    <div class="row justify-content-center">
+        {% for campaign in campaigns %}
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="{{ campaign.image.url }}" class="card-img-top" alt="{{ campaign.title }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ campaign.title }}</h5>
+                        <p class="card-text">Status: {{ campaign.status }}</p>
+                        <a href="{% url 'admin_campaign_approve' campaign.id %}" class="btn btn-success">Approve</a>
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            <div class="col-12">
+                <div class="alert alert-warning" role="alert">
+                    No pending campaigns for approval.
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <br><br><br><br>
+    <a href="{% url 'admin_approval_history' %}" class="btn btn-primary">View Approval History</a>
+</div>
+{% endblock %}
+
+
+
+
+
+
+

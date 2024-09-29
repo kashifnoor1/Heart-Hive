@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h2 class="text-center mb-4">Active Campaigns</h2>
+  <div class="image-grid">
+    {% for campaign in campaigns %}
+      <div class="image-grid-item">
+        <img src="{{ campaign.image.url }}" alt="{{ campaign.title }}">
+        <h5 class="mt-2">{{ campaign.title }}</h5>
+        <p>{{ campaign.description|truncatewords:15 }}</p> 
+        <div class="text-center">
+          <a class="btn btn-primary" href="{% url 'campaign_overview' campaign.pk %}">View Details</a>
+        </div>
+      </div>
+    {% empty %}
+      <div class="col text-center">
+        <p>No active campaigns yet.</p>
+      </div>
+    {% endfor %}
+  </div>
+{% endblock %} 
+

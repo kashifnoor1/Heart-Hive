@@ -1,0 +1,36 @@
+{% extends 'base_donor.html' %}
+{% load static %}
+
+{% block content %}
+  <div class="container mt-5">
+    <h1>{{ donor.username }}'s Profile</h1>
+    <p>
+      {% if donor.profile_picture %}
+        <img src="{{ donor.profile_picture.url }}" alt="{{ donor.username }}'s Profile Picture" style="width:150px; height:150px; object-fit:cover; border-radius:50%;">
+      {% else %}
+        <img src="{% static 'images/default_profile.png' %}" alt="Default Profile Picture" style="width:150px; height:150px; object-fit:cover; border-radius:50%;">
+      {% endif %}
+    </p>
+    
+    <p><strong>First Name:</strong> {{ donor.first_name }}</p>
+    <p><strong>Last Name:</strong> {{ donor.last_name }}</p>
+    <p><strong>Email:</strong> {{ donor.email }}</p>
+    <p><strong>Phone:</strong> {{ donor.contact_info }}</p>
+    <p><strong>Account Balance:</strong> {{ donor.account_balance }}</p>
+    
+    <a href="{% url 'donor_profile_update' %}" class="btn btn-primary">Update Profile</a>
+
+  
+    <h2>Donation History</h2>
+    <ul>
+        {% for donation in donations %}
+            <li>{{ donation.campaign.title }} - {{ donation.amount }} - {{ donation.date|date:"F j, Y, g:i a" }}</li>
+        {% empty %}
+            <li>No donations made yet.</li>
+        {% endfor %}
+    </ul>
+  </div>
+{% endblock %}
+
+
+

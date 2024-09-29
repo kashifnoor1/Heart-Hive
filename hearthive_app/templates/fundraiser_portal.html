@@ -1,0 +1,16 @@
+{% extends 'base_fundraiser.html' %}
+
+{% block content %}
+  <div class="container mt-5">
+    <h1>Welcome to your Fundraiser Portal {{ user.username }}</h1>
+
+    <a href="{% url 'create_campaign' %}" class="btn btn-primary">Create Campaign</a>
+  </div>
+{% endblock %}
+
+
+
+
+
+
+

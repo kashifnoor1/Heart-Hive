@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+            <div class="card">
+                <img src="{{ campaign.image.url }}" class="card-img-top" alt="{{ campaign.title }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ campaign.title }}</h5>
+                    <p class="card-text">{{ campaign.description|truncatewords:20 }}</p>
+                    <p class="card-text"><strong>Category:</strong> {{ campaign.category_id }}</p>
+                    <p class="card-text"><strong>Target Amount:</strong> ${{ campaign.target_amount }}</p>
+                    <div class="text-center mt-4">
+                        {% if user.is_authenticated %}
+                            <!-- Show the 'Donate Now' button if the user is logged in -->
+                            <a class="btn btn-primary w-100" href="{% url 'donate_to_campaign' campaign.pk %}">Donate Now</a>
+                        {% else %}
+                            <!-- Show the 'Login to Donate' button if the user is not logged in -->
+                            <a class="btn btn-secondary w-100" href="{% url 'login' %}">Login to Donate</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
