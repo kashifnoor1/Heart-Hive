@@ -2,35 +2,53 @@
 {% load static %}
 
 {% block content %}
-  <div class="container mt-5">
-    <h1>{{ donor.username }}'s Profile</h1>
-    <p>
-      {% if donor.profile_picture %}
-        <img src="{{ donor.profile_picture.url }}" alt="{{ donor.username }}'s Profile Picture" style="width:150px; height:150px; object-fit:cover; border-radius:50%;">
-      {% else %}
-        <img src="{% static 'images/default_profile.png' %}" alt="Default Profile Picture" style="width:150px; height:150px; object-fit:cover; border-radius:50%;">
-      {% endif %}
-    </p>
-    
-    <p><strong>First Name:</strong> {{ donor.first_name }}</p>
-    <p><strong>Last Name:</strong> {{ donor.last_name }}</p>
-    <p><strong>Email:</strong> {{ donor.email }}</p>
-    <p><strong>Phone:</strong> {{ donor.contact_info }}</p>
-    <p><strong>Account Balance:</strong> {{ donor.account_balance }}</p>
-    
-    <a href="{% url 'donor_profile_update' %}" class="btn btn-primary">Update Profile</a>
+  <div class="container mt-5 d-flex justify-content-center">
+    <div class="card shadow-lg p-4" style="max-width: 800px; width: 100%;">
+      <div class="text-center mb-4">
+        <h1>{{ donor.first_name }} {{ donor.last_name }}'s Profile</h1>
+        <p>
+          {% if donor.profile_picture %}
+            <img src="{{ donor.profile_picture.url }}" alt="{{ donor.username }}'s Profile Picture" style="width:150px; height:150px; object-fit:cover; border-radius:50%;">
+          {% else %}
+            <img src="{% static 'images/default_profile.png' %}" alt="Default Profile Picture" style="width:150px; height:150px; object-fit:cover; border-radius:50%;">
+          {% endif %}
+        </p>
+        <a href="{% url 'donor_profile_update' %}" class="btn btn-primary">Update Profile</a>
+      </div>
 
-  
-    <h2>Donation History</h2>
-    <ul>
-        {% for donation in donations %}
-            <li>{{ donation.campaign.title }} - {{ donation.amount }} - {{ donation.date|date:"F j, Y, g:i a" }}</li>
-        {% empty %}
-            <li>No donations made yet.</li>
-        {% endfor %}
-    </ul>
+      <div class="profile-info text-left">
+        <h3 class="mb-4">Profile Information</h3>
+        <p><strong>First Name:</strong> {{ donor.first_name }}</p>
+        <p><strong>Last Name:</strong> {{ donor.last_name }}</p>
+        <p><strong>Email:</strong> {{ donor.email }}</p>
+        <p><strong>Phone:</strong> {{ donor.contact_info }}</p>
+      </div>
+
+      <hr class="my-4">
+
+      <div class="donation-history text-left">
+        <h3 class="mb-4">Donation History</h3>
+        {% if donations %}
+          <ul class="list-group">
+            {% for donation in donations %}
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                <div>
+                  <strong>{{ donation.campaign.title }}</strong>
+                  <br>
+                  <small class="text-muted">{{ donation.date|date:"F j, Y, g:i a" }}</small>
+                </div>
+                <span class="badge badge-success badge-pill">${{ donation.amount }}</span>
+              </li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <p>No donations made yet.</p>
+        {% endif %}
+      </div>
+    </div>
   </div>
 {% endblock %}
+
 
 
 

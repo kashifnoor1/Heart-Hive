@@ -1,5 +1,45 @@
 {% extends 'base_fundraiser.html' %}
 {% load static %}
+
+{% block content %}
+  <div class="container mt-5 d-flex justify-content-center">
+    <div class="card shadow-sm p-4" style="max-width: 600px; width: 100%;">
+      <div class="text-center">
+        <h1 class="mb-4">{{ fundraiser.first_name }} {{ fundraiser.last_name }}'s Profile</h1>
+        
+        <!-- Profile Picture -->
+        {% if fundraiser.profile_picture %}
+          <img src="{{ fundraiser.profile_picture.url }}" alt="{{ fundraiser.username }}'s Profile Picture" class="rounded-circle shadow" style="width:150px; height:150px; object-fit:cover;">
+        {% else %}
+          <img src="{% static 'images/default_profile.png' %}" alt="Default Profile Picture" class="rounded-circle shadow" style="width:150px; height:150px; object-fit:cover;">
+        {% endif %}
+      </div>
+      
+      <!-- Profile Details -->
+      <div class="mt-4">
+        <p><strong>First Name:</strong> {{ fundraiser.first_name }}</p>
+        <p><strong>Last Name:</strong> {{ fundraiser.last_name }}</p>
+        <p><strong>Email:</strong> {{ fundraiser.email }}</p>
+        <p><strong>Phone:</strong> {{ fundraiser.contact_info }}</p>
+        <p><strong>Country:</strong> {{ fundraiser.country }}</p>
+        <p><strong>Total Campaigns:</strong> {{ fundraiser.campaign_set.count }}</p>
+      </div>
+
+      <!-- Update Profile Button -->
+      <div class="text-center mt-4">
+        <a href="{% url 'fundraiser_profile_update' %}" class="btn btn-primary">Update Profile</a>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+
+
+
+
+
+{% comment %} {% extends 'base_fundraiser.html' %}
+{% load static %}
 {% block content %}
   <div class="container mt-5">
     <h1>{{ fundraiser.username }}'s Profile</h1>
@@ -22,7 +62,7 @@
     <a href="{% url 'fundraiser_profile_update' %}" class="btn btn-primary">Update Profile</a>
 
   </div>
-{% endblock %}
+{% endblock %} {% endcomment %}
 
 
 

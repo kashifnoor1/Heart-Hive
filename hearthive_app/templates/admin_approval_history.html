@@ -11,7 +11,6 @@
                 <th>Admin</th>
                 <th>Timestamp</th>
                 <th> Target Amount </th>
-                <th> Amount </th>
             </tr>
         </thead>
         <tbody>
@@ -22,7 +21,7 @@
                     <td>{{ record.admin.username }}</td>
                     <td>{{ record.timestamp }}</td>
                     <td>{{ record.campaign.target_amount }}</td>
-                    <td>{{ record.campaign.total_donations }}</td> 
+      
                 </tr>
             {% empty %}
                 <tr>

@@ -14,7 +14,7 @@
                     <div class="text-center mt-4">
                         {% if user.is_authenticated %}
                             <!-- Show the 'Donate Now' button if the user is logged in -->
-                            <a class="btn btn-primary w-100" href="{% url 'donate_to_campaign' campaign.pk %}">Donate Now</a>
+                            <a class="btn btn-primary w-100" href="{% url 'donate' campaign.pk %}">Donate Now</a>
                         {% else %}
                             <!-- Show the 'Login to Donate' button if the user is not logged in -->
                             <a class="btn btn-secondary w-100" href="{% url 'login' %}">Login to Donate</a>

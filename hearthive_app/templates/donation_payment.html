@@ -1,0 +1,62 @@
+{% extends 'base_donor.html' %}
+
+{% block content %}
+<div class="container my-5">
+    <h1 class="text-center mb-4">Donate to {{ campaign.title }}</h1>
+
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form action="" method="POST" class="card shadow p-4">
+                {% csrf_token %}
+                <div class="form-group mb-3 text-center">
+                    <label for="amount" class="form-label">Amount (USD)</label>
+                    <input type="number" name="amount" id="amount" class="form-control" placeholder="Enter amount" min="1" required>
+                </div>
+
+                {% if error %}
+                    <div class="alert alert-danger text-center">
+                        {{ error }}
+                    </div>
+                {% endif %}
+
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-primary btn-block">Proceed to Payment</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+
+
+{% comment %} {% extends 'base_donor.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Donate</title>
+</head>
+<body>
+    <h1>Donate to {{ campaign.title }}</h1>
+
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div class="text-center">
+            <label for="amount">Amount in USD</label>
+            <input type="number" name="amount" id="amount" class="form-control" required>
+        </div>  <br>
+
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+        <div class="text-center">
+        <button type="submit" class="btn btn-primary">Proceed to Payment</button>
+        </div>
+    </form>
+</body>
+</html>
+{% endblock %} {% endcomment %}

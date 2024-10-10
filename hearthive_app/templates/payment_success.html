@@ -1,0 +1,25 @@
+{% extends 'base_donor.html' %}
+
+{% block content %}
+<div class="container text-center my-5">
+    <div class="card shadow-lg p-5">
+        <div class="card-body">
+            <h1 class="display-4 text-success">Payment Successful!</h1>
+            <p class="lead">Thank you for your generous donation! Your contribution will make a difference.</p>
+            
+            <!-- Decorative Icon -->
+            <div class="my-4">
+                <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor" class="bi bi-check-circle text-success" viewBox="0 0 16 16">
+                    <path d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zM6.293 9.293a1 1 0 0 1 1.414 0l1.25 1.25L12.293 7.793a1 1 0 1 1 1.414 1.414l-4 4a1 1 0 0 1-1.414 0L6.293 9.293a1 1 0 0 1 0-1.414z"/>
+                </svg>
+            </div>
+            
+            <!-- Call-to-Action Button -->
+            <div class="mt-4">
+                <a href="{% url 'home' %}" class="btn btn-lg btn-primary">Back to Home</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

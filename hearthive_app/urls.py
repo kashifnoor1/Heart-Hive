@@ -3,8 +3,8 @@ from .views import ( DonorRegisterView, FundraiserRegisterView, LogoutView, Home
 AdminPortalView, FundraiserPortalView, DonorPortalView, FundraiserProfileView,
 FundraiserCampaignListView, FundraiserCampaignCreateView,  AdminCampaignApproveView,
 DonorProfileView, DonorProfileUpdateView, FundraiserProfileUpdateView,
-DonationCreateView, CampaignDetailView, AdminApprovalHistoryView, NotificationListView, CampaignOverviewView,
-AboutView, ContactUsView, CampaignDeleteView)
+CampaignDetailView, AdminApprovalHistoryView, NotificationListView, CampaignOverviewView,
+AboutView, ContactUsView, CampaignDeleteView, DonateView, DonationSuccessView)
 
 from django.conf.urls.static import static
 from django.conf import settings
@@ -31,7 +31,6 @@ urlpatterns = [
     path('donor/profile/update/', DonorProfileUpdateView.as_view(), name='donor_profile_update'),
     
 
-    path('donate/<int:pk>/', DonationCreateView.as_view(), name='donate_to_campaign'),
     path('campaign/<int:pk>/', CampaignDetailView.as_view(), name='campaign_detail'),
     path('campaign/<int:pk>/delete/', CampaignDeleteView.as_view(), name='delete_campaign'),
 
@@ -45,6 +44,12 @@ urlpatterns = [
     path('dashboard/approval-history/', AdminApprovalHistoryView.as_view(), name='admin_approval_history'),
     path('notifications/', NotificationListView.as_view(), name='notifications'),
     path('campaigns/<int:pk>/details/', CampaignOverviewView.as_view(), name='campaign_overview'),
+
+
+
+    path('donate/<int:campaign_id>/', DonateView.as_view(), name='donate'),
+    path('donation-success/', DonationSuccessView.as_view(), name='donation_success'),
+
 
 
 ]

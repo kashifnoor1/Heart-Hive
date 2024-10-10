@@ -1,8 +1,15 @@
 {% extends 'base_donor.html' %}
 
 {% block content %}
-<div class="container">
-    <h1>Donor Dashboard</h1>
-    <p>Welcome to the Donor Portal, {{ user.username }}.</p>
-</div>
+  <div class="container mt-5 d-flex justify-content-center">
+    <div class="card shadow-lg p-5" style="max-width: 600px; width: 100%;">
+      <div class="text-center">
+        <h1 class="mb-4">Donor Dashboard</h1>
+        <p class="lead">Welcome to the Donor Portal, <strong>{{ user.first_name }} {{ user.last_name }}</strong>.</p>
+        <p>Thank you for your generous contributions. Explore available campaigns and make an impact today.</p>
+
+        <a href="{% url 'home' %}" class="btn btn-primary mt-4">Explore Campaigns</a>
+      </div>
+    </div>
+  </div>
 {% endblock %}
