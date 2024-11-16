@@ -142,3 +142,8 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'kashifnoor789789@gmail.com'
 EMAIL_HOST_PASSWORD = 'jimn bhuq qkry hior'
+
+
+
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [BASE_DIR / 'static']

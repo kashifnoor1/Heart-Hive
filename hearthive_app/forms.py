@@ -38,6 +38,8 @@ class FundraiserModelForm(forms.ModelForm):
             'username': None,  # Removing username help text
         }
 
+
+
 # Campaign form
 class CampaignForm(forms.ModelForm):
     class Meta:
