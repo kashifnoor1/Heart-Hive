@@ -147,3 +147,5 @@ EMAIL_HOST_PASSWORD = 'jimn bhuq qkry hior'
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']
+
+STATICFILES_DIRS = [BASE_DIR / "staticfiles"]  # replace as needed
